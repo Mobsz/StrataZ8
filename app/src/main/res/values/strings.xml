@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">StrataZ</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_resources">ResourcesActivity</string>
+    <string name="top_fragment">Home</string>
+
+    <!--Tab Strings -->
+    <string name="resource_tab">Resources</string>
+    <string name="home_tab">Home</string>
+    <string name="unit_tab">Units</string>
+    <string name="dice_tab">Dice</string>
+    <string name="top_tab">Main</string>
+
+    <!--Card Default Text Strings -->
+    <string name="health">HP: </string>
+    <string name="defense">Def: </string>
+    <string name="attack">Atk: </string>
+    <string name="movement">MP: </string>
+
+
+    <string-array name="resources">
+        <item>Gold</item>
+        <item>Truffles</item>
+    </string-array>
+
+    <string-array name="civunits">
+        <item>Settler</item>
+        <item>Worker</item>
+    </string-array>
+
+    <string-array name="milunits">
+        <item>Unit</item>
+        <item>Warrior</item>
+        <item>Archer</item>
+        <item>Horseman</item>
+        <item>Spy</item>
+        <item>Ram</item>
+    </string-array>
+
+    <string-array name="millevels">
+        <item>Level</item>
+        <item>1: Basic</item>
+        <item>2: Established</item>
+        <item>3: Commander</item>
+        <item>4: Legendary</item>
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

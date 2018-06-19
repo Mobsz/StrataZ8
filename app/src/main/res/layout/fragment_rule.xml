@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_resource_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    card_resource_view:cardCornerRadius="4dp"
+    card_resource_view:cardElevation="10dp"
+    android:paddingTop="100dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/ruleNameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ruleNameView">
+
+            <TextView
+                android:id="@+id/ruleInfoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ruleNameView"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:text="Info"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
