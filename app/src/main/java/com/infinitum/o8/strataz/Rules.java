@@ -426,7 +426,6 @@ public class Rules {
                     "\t - 5 Metropolises\n" +
                     "\t - 30 SP Cards\n"),
             new Rules("Glossary", "")
-
     };
 
     public Rules (String ruleName, String ruleInfo){
