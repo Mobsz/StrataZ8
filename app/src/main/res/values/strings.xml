@@ -43,7 +43,6 @@
         <item>Spy</item>
         <item>Ram</item>
     </string-array>
-
     <string-array name="millevels">
         <item>Level</item>
         <item>1: Basic</item>
