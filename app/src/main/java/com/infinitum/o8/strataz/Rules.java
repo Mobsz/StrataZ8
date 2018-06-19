@@ -5,41 +5,36 @@ public class Rules {
     private String ruleInfo;
 
     public static final Rules[] rule = {
-            new Rules("Rules Table of Contents", "Game Overview\n\n" +
-                    "Game Objective\n\n" +
-                    "Game Set-Up\n" +
-                    "\tGame Pieces\n" +
-                    "\tTurn Order\n\n" +
-                    "During Your Turn\n" +
-                    "\tPrimary: Upkeep\n" +
-                    "\tSecondary: Constructing & Creating\n" +
-                    "\tTertiary: Move/Actions\n" +
-                    "\tExploration\n" +
-                    "\tSabotage\n" +
-                    "\tSurvey the Land\n" +
-                    "\tInstant\n\n" +
-                    "Numbers\n\n" +
-                    "Resources\n\n" +
-                    "Tiles\n" +
-                    "\tResource Tiles\n\n" +
-                    "Units\n\n" +
-                    "Tile Improvements\n\n" +
-                    "Intersection Structures\n\n" +
-                    "Exploration Roll\n" +
-                    "\tArcane Tower\n" +
-                    "\tRuin\n" +
-                    "\tFort\n" +
-                    "\tFactory\n\n" +
-                    "Homes\n" +
-                    "\tHome Complexity\n\n" +
-                    "Combat\n\n" +
-                    "Phases\n" +
-                    "Exploration\n\n" +
-                    "Sabotage\n\n" +
-                    "Survey the Land\n\n" +
-                    "Instant\n\n" +
-                    "Societal Progression (SP Cards)\n\n" +
-                    "Win Conditions\n\n"),
+            new Rules("Rules Table of Contents", "+ Game Overview\n\n" +
+                    "+ Game Objective\n\n" +
+                    "+ Game Set-Up\n" +
+                    "\t - Game Pieces\n" +
+                    "\t - Turn Order\n\n" +
+                    "+ During Your Turn\n" +
+                    "\t - Primary: Upkeep\n" +
+                    "\t - Secondary: Constructing & Creating\n" +
+                    "\t - Tertiary: Move/Actions\n" +
+                    "\t - Exploration\n" +
+                    "\t - Sabotage\n" +
+                    "\t - Survey the Land\n" +
+                    "\t - Instant\n\n" +
+                    "+ Numbers\n\n" +
+                    "+ Resources\n\n" +
+                    "+ Tiles\n" +
+                    "\t - Resource Tiles\n\n" +
+                    "+ Units\n\n" +
+                    "+ Tile Improvements\n\n" +
+                    "+ Intersection Structures\n\n" +
+                    "+ Exploration Roll\n" +
+                    "\t - Arcane Tower\n" +
+                    "\t - Ruin\n" +
+                    "\t - Fort\n" +
+                    "\t - Factory\n\n" +
+                    "+ Homes\n" +
+                    "\t - Home Complexity\n\n" +
+                    "+ Combat\n\n" +
+                    "+ Societal Progression (SP Cards)\n\n" +
+                    "+ Win Conditions\n\n"),
             new Rules("Game Overview", "One species, divided by an unending race for supremacy. Opting to fall into the narcissistic abyss of unregulated hubris, instead of selflessly rising in unity as one. In spite of the relentless tribulations spawned by the world and Universe they inhabit, they choose to waste energy on trivial problems, unaware of the greater powers that be within the Universe. They were no more than sprouts, perpetually hindering their growth up the hierarchy of the Universal tree of life. Wielding the knowledge gained through ancient technology, this species was able to reach previously unattainable goals. Inherently, there is a need to explore and thusly so the species spread, dividing along different paths as they went. As the people of this world expanded and explored, they found peculiar structures spread throughout the lands. Dilapidated ruins of a long lost civilization so technologically advanced, it seemed as though it were magic. Blueprints for world altering machines have been found, along with modular mechanical parts. A massive mountain, at which the main societies gather around for its ancient power. Perhaps, someday there will be a leader, capable of progressing society by means of cooperation, or conquest. This, is only the beginning."),
             new Rules("Game Objective", "You are the leader of your people. It is your job to steer the progress of history, which will be made by your actions. Will you be a kind and benevolent leader, opting for trade and worldwide success as one species? Or will you become a maniacal Warmonger, mind set on expanding your empire, taking over every land you come across? You will encounter many tough decisions and experience policies and actions that although either good or evil, will still progress you as a whole, learning from your mistakes and reveling in your successes. Good luck mighty Leader, may you have many successes in all your adventures and endeavors."),
             new Rules("Game Set-up", "Game Pieces:\n" +
@@ -147,7 +142,290 @@ public class Rules {
                     "\t\t -- Survey Roll: Roll a D20\n" +
                     "\t\t -- Resource Amount on that Tile is now equal to the rolled result\n\n" +
                     "+ Instant:\n" +
-                    "\t - Instant Actions can be done at any moment in time. Societal Progression cards can be played at any moment (unless otherwise specified)\n")
+                    "\t - Instant Actions can be done at any moment in time. Societal Progression cards can be played at any moment (unless otherwise specified)\n"),
+            new Rules("Numbers", "\t+ If you encounter a number that cannot be operated on without resulting in a whole number, round up at the tenth decimal point and use that number instead"),
+            new Rules("Rolls", "+ D20 Roll:\n" +
+                    "\t - Roll a D20, use that result unless otherwise specified\n" +
+                    "+ D6 Roll:\n" +
+                    "\t - Roll a D6, divide that number in half, rounding up and write that number on the Modifier Slot (Ex: 5/2= 2.5, Result = 3)\n"),
+            new Rules("Resource List", "+ Lumber:\n" +
+                    "\t - Cedar\n" +
+                    "\t - Maple\n" +
+                    "+ Metal:\n" +
+                    "\t - Copper\n" +
+                    "\t - Iron\n" +
+                    "+ Food:\n" +
+                    "\t - Grain\n" +
+                    "\t - Livestock\n" +
+                    "+ Strategic:\n" +
+                    "\t - Horse\n" +
+                    "\t - Gravel\n" +
+                    "\t - Orb of Intellect\n"),
+            new Rules("Tiles", "+ Adjacency:\n" +
+                    "\t - 4 Way Adjacency: Resource Tiles are connected by both octogonal edges and square intersections. The 4-Way adjacency of a Resource Tile, is the diagonal corners of the octagon that connect directly with another octagon. Resource Tiles connected by an intersection are considered an extra Movement Point worth of space away, compared to a directly connecting Tile.\n" +
+                    "\t\t -- Intersection spaces cannot be landed on\n" +
+                    "\t - Intersection Adjacency: The 4 Resource Tiles connected to the Intersection Square\n" +
+                    "+ Claiming a Tile:\n" +
+                    "\t - To claim a Tile, you must use a Worker to Work that land, build a Building on that land, or Purchase the Tile\n" +
+                    "\t - The Tile must be adjacent to an owned Tile\n" +
+                    "\t - Once a Tile is under your ownership, color in the Flag Slot with your color\n" +
+                    "+ Purchasing a Tile:\n" +
+                    "\t - Cost: Gold 200\n" +
+                    "\t - Must be 4-Way Adjacent to an owned Tile\n" +
+                    "+ Mountain Tiles:\n" +
+                    "\t - Mountain Tiles have 4 Movement Cost. You may attempt an OoI Roll with a Scholar when on a Mountain Tile. If successful, you receive 1 OoI, instead of the potential 2 from the OoI Mountain\n"),
+            new Rules("Units", "Civilian Units\n" +
+                    "+ Civilian Units are unable to attack, but can be attacked by Opponent Units\n" +
+                    "\t - Civilian Units do an Escape Roll (Roll a D20) instead when attacked, with the Opponent making an Attack Roll (Roll a D20). Subtract the Attack Roll from the Escape Roll\n" +
+                    "\t - If the Civilian Unit loses, the attacking Player gains control of that Civilian Unit\n" +
+                    "+ Settlers:\n" +
+                    "\t - Cost: Food 100, Lumber 100, Metal 100\n" +
+                    "\t - Settlers must establish Homes at least 2 Tiles away from any other Home, including the Player’s and any other Opponent’s Homes\n" +
+                    "\t - When a Home is established, gain 25 of each resource 4-Way adjacent to the Home\n" +
+                    "+ Workers:\n" +
+                    "\t - Cost: Food 50, Lumber 50\n" +
+                    "\t - When a builder works a Resource Tile, you receive the full amount of Resources at the beginning of your upkeep\n" +
+                    "+ Merchants:\n" +
+                    "\t - Cost: Food 50, Lumber: 50, Metal: 25\n" +
+                    "\t - Merchants have 5 Movement Points\n" +
+                    "\t - When a merchant reaches another Home then the one it was created at, you receive 50 Gold\n" +
+                    "\t - If that Home is an Opponent’s Home and they accept it, you gain 100 Gold and your Opponent receives 25 Gold\n" +
+                    "+ Scholars:\n" +
+                    "\t - Cost: Food 50, Lumber 50, Metal 50\n" +
+                    "\t - When a Scholar moves onto an Intersection Tile containing an Arcane Tower, you may make an Enlightenment Roll\n" +
+                    "\t\t\t --- Roll a D20\n" +
+                    "\t\t\t --- 0-5 Nothing Happens, move your Scholar back to its previous Unit Space\n" +
+                    "\t\t\t --- 6-10 Gain 1 OoI\n" +
+                    "\t\t\t --- 11-15 Gain 2 OoI\n" +
+                    "\t\t\t --- 16-20 Gain 3 OoI, destroy the Arcane Tower\n" +
+                    "Military Units\n\n" +
+                    "+ General Terms:\n" +
+                    "\t - Lvl: Level\n" +
+                    "\t\t -- The Level of the Unit; increased levels boost Unit Stats\n" +
+                    "\t\t -- See Experience & Leveling for more information\n" +
+                    "\t - HP: Health Points\n" +
+                    "\t\t -- The amount of Health your Unit has, once this reaches 0, the Unit dies\n" +
+                    "\t - Atk: Attack Strength\n" +
+                    "\t\t -- The Base Strength of an Attack made by this Unit\n" +
+                    "\t\t -- Weapon Upgrade:\n" +
+                    "\t\t\t --- Iron: \n" +
+                    "\t\t\t --- Cost: Lumber 50, Iron 100, Gold 50 \n" +
+                    "\t\t\t --- Info: Atk +5\n" +
+                    "\t\t -- Atk Modifier:\n" +
+                    "\t\t\t --- Make a D6 Roll\n" +
+                    "\t - Def: Defensive Power\n" +
+                    "\t\t -- The Base resilience of this Unit’s Defense, protecting it from damage before it’s HP\n" +
+                    "\t\t -- Armor Upgrade:\n" +
+                    "\t\t\t --- Head:\n" +
+                    "\t\t\t\t ---- Cost: Lumber 25, Iron 25, Gold 25\n" +
+                    "\t\t\t\t ---- Def +5\n" +
+                    "\t\t\t --- Chest: \n" +
+                    "\t\t\t\t ---- Cost: Lumber 25, Iron 75, Gold 50\n" +
+                    "\t\t\t\t ---- Def +5\n" +
+                    "\t\t\t --- Legs: \n" +
+                    "\t\t\t\t ---- Cost: Lumber 25, Iron 50, Gold 25\n" +
+                    "\t\t\t\t ---- Def +5\n" +
+                    "\t - MP: Movement Points\n" +
+                    "\t\t -- The amount of Movement available to this Unit, per turn\n" +
+                    "Army Units:\n" +
+                    "+ Warriors: \n" +
+                    "\t - Cost: Food 50, Lumber 50, Metal 100, Gold 25\n" +
+                    "\t - Stats: HP 20, Attack 20 , Defense 20, MP: 3\n" +
+                    "\t - Warriors can Attack other Units and Homes\n" +
+                    "\t - Warriors can Conquer a Home\n" +
+                    "\t - Warriors can Sabotage\n" +
+                    "+ Archers:\n" +
+                    "\t - Cost: Food 50, Lumber 100, Metal 50, Gold 25\n" +
+                    "\t - Stats: HP 30, Attack 10, Defense 10, MP: 4\n" +
+                    "\t - Archers can Attack other Units and Homes. Since they Attack from a distance, it eliminates the Opponent’s ability to Counter-Attack.\n" +
+                    "\t - Archers can Sabotage\n" +
+                    "+ Horseman:\n" +
+                    "\t - Cost: Food 100, Lumber 50, Metal 100, Gold 25\n" +
+                    "\t - Stats: HP 20, Attack 30, Defense 10, MP: 6\n" +
+                    "\t - Horseman can Attack other Units and Homes\n" +
+                    "\t - Horsemen can Conquer a Home\n" +
+                    "\t - Horsemen can Sabotage\n" +
+                    "+ Rams:\n" +
+                    "\t - Cost: Food 50, Lumber 100, Metal 100\n" +
+                    "\t - Stats: HP 30, Attack 50, Defense 20, MP: 2\n" +
+                    "\t - Rams can only Attack Homes\n" +
+                    "\t - Rams receive a bonus of +25 Damage when making a Damage Roll against a Home’s Walls only, not the Home’s HP\n" +
+                    "\t - See Combat for Ram and Home Siege Attacking information\n" +
+                    "+ Spies:\n" +
+                    "\t - Cost: Food 25, Lumber 50, Metal 50, Gold 25, OoI 2\n" +
+                    "\t - Spies can perform Sabotage\n" +
+                    "\t - Spies can Steal an Opponent’s SP card, chosen at random. When this happens, destroy the Spy\n" +
+                    "\t - Spies do not Move, and thus have no MP\n"),
+            new Rules("Resource Tile Improvement", "+ Roads:\n" +
+                    "\t - Cost: Lumber 25, Gravel 50, Gold 10\n" +
+                    "\t - When purchased, color in the Road Slot on the Tile with your Societies’ color\n" +
+                    "\t - Tile Movement cost is reduced by half (Movement cost cannot be lower than 1)\n" +
+                    "\t - Color in the Road Slot with your color\n" +
+                    "+ Stable:\n" +
+                    "\t - Must be built on a Horses Resource Tile\n" +
+                    "\t - Cost: Food 100, Lumber 50, Metal 50\n" +
+                    "\t - Movement cost for all of your units reduced by 1 (Movement cost cannot be lower than 1)\n" +
+                    "\t - If a Player does not own a Stable, but possesses 250 Horses, they receive this bonus\n" +
+                    "\t - Write Sa in the Building Slot\n" +
+                    "+ Mine:\n" +
+                    "\t - Cost: Food 25, Lumber 100, Metal 50\n" +
+                    "\t - Must be built on a Metal Resource Tile\n" +
+                    "\t - Doubles the Resource Amount on this Resource Tile\n" +
+                    "\t - Write Mi in the Building Slot\n" +
+                    "+ Lumber Mill:\n" +
+                    "\t - Cost: Food 25, Lumber 50, Metal 50\n" +
+                    "\t - Must be built on a Lumber Resource Tile\n" +
+                    "\t - Double the Resource Amount on this Resource Tile\n" +
+                    "\t - Write Lu in the Building Slot\n" +
+                    "+ Farm:\n" +
+                    "\t - Cost: Food 25, Lumber 50, Metal 25\n" +
+                    "\t - Must be built on a Food Resource Tile\n" +
+                    "\t - Double the Resource Amount on this Resource Tile\n" +
+                    "\t - Write Fa in the Building Slot\n"),
+            new Rules("Intersection Structures", "+ Intersections cannot be explored on the same turn that they are discovered\n" +
+                    "+ To explore an intersection, you must have a unit occupying the same tile and make a Exploration Roll\n" +
+                    "+ Exploration Roll: Roll a D20\n" +
+                    "\t - 0-10 The intersection is empty\n" +
+                    "\t - 11-15 Arcane Tower\n" +
+                    "\t - 16-20 Ruin\n" +
+                    "+ Arcane Tower: Towers Powered by OoI\n" +
+                    "\t\t -- Study at Arcane Tower with a Scholar: D20 Roll\n" +
+                    "\t\t -- 0-10 Nothing happens\n" +
+                    "\t\t -- 11-15 Gain 1 OoI, discard Scholar\n" +
+                    "\t\t -- 16-20 Gain 2 OoI, discard Scholar\n" +
+                    "+ Ruin: Ruins Full of Ancient Tech\n" +
+                    "\t - Search Ruins: D20 Roll\n" +
+                    "\t\t -- 0-1 Nothing happens\n" +
+                    "\t\t -- 2-4 Gain 25 Gold\n" +
+                    "\t\t -- 5-10 Gain a Worker\n" +
+                    "\t\t -- 11-15 Gain a Merchant\n" +
+                    "\t\t -- 16-20 Gain a Scholar\n" +
+                    "\t - The ruins collapse after you make a successful roll\n" +
+                    "+ Fort: Defensive Building - Player Built\n" +
+                    "\t - Cost: Food 100, Lumber 100, Metal 100, Gravel 50\n" +
+                    "\t - HP: 50, Attack 20\n" +
+                    "+ Factory: Processes Resources - Player Built\n" +
+                    "\t - Cost: Food 50, Lumber 150, Metal 50, Gold 50\n" +
+                    "\t - Gain Double the Resources from Adjacent Tiles\n"),
+            new Rules("Homes", "+ Home Cards stay face-down until you create a correlating Home\n" +
+                    "+ When a Home’s HP reaches 0 HP, it loses its ability to receive Resources until it is repaired\n" +
+                    "\t - Repair: The cost of Repairing a Home is equal to the cost of the Complexity of the Home (Settlement = Food 100, Lumber 100, Metal 100; Town = Grain 200, Cedar 150, Copper 150)\n" +
+                    "+ Modifiers:\n" +
+                    "\t - Modifiers require a Modification Slot; Max 2 per Home\n" +
+                    "\t - Gold or Food:\n" +
+                    "\t\t -- Cost: Food 100, Lumber 50, Metal 50, Gold 100\n" +
+                    "\t\t -- Double either your Gold/Turn or Food/Turn\n" +
+                    "\t\t -- Write Go for Gold, or Fo for Food\n" +
+                    "+ HP or Defense:\n" +
+                    "\t\t -- Cost: Food 50, Lumber 100, Metal 100, Gold 100\n" +
+                    "\t\t -- Double either your Health Points or Defense\n" +
+                    "\t\t -- Write HP for Health Points, or De for Defense\n" +
+                    "+ Invincibility:\n" +
+                    "\t\t -- Cost: Food 100, Lumber 100, Metal 100, Gold 100\n" +
+                    "\t\t -- Activate this Mod when you are being Attacked by an Opponent; prevent all damage for this turn and discard this Mod\n" +
+                    "\t\t -- Write In for Invincibility\n" +
+                    "+ ProtoTower:\n" +
+                    "\t\t -- Cost: Food 50, Lumber 50, Metal 50, Gold 200\n" +
+                    "\t\t -- Whenever you gain an OoI, receive 1 extra\n" +
+                    "\t\t -- Write Pr for ProtoTower\n\n" +
+                    "+ Buildings:\n" +
+                    "+ Grainery: \n" +
+                    "\t\t -- Cost: Food 50, Lumber 50, Metal 50\n" +
+                    "\t\t -- Make a D20 Roll, add the result to your Home’s Food/Turn\n" +
+                    "\t\t -- Graineries require a Building slot\n" +
+                    "\t\t -- Write Bu in the Building Slot\n" +
+                    "+ Barracks:\n" +
+                    "\t\t -- Cost: Food 100, Lumber 50, Metal 100, Gold 25\n" +
+                    "\t\t -- Gain 1 Military Unit of your choice of either a Warrior, Archer, or Horseman\n" +
+                    "\t\t -- Military Units built in this Home cost half of their base cost\n" +
+                    "\t\t -- Write Ba in the Building Slot\n" +
+                    "+ Walls:\n" +
+                    "\t\t -- Cost: Lumber 100, Metal 100, Gravel 100, Gold 25\n" +
+                    "\t\t -- This Home now has 50 Defense, attacking Players must bring this Home’s Defense to 0 before dealing damage to the Home’s HP\n" +
+                    "\t\t -- Write Wa in the Building Slot\n" +
+                    "+ University: \n" +
+                    "\t\t -- Cost: Food 100, Lumber 100, Metal 50, OoI 1, Gold 50\n" +
+                    "\t\t -- SP cards cost half their base cost\n" +
+                    "\t\t -- Scholars cost half their base cost\n" +
+                    "\t\t -- Write Un in the Building Slot\n" +
+                    "+ Marketplace:\n" +
+                    "\t\t -- Cost: Food 50, Lumber 50, Gold 100\n" +
+                    "\t\t -- Double Gold/Turn from this Home\n" +
+                    "\t\t -- Write Ma in the Building Slot\n\n" +
+                    "+ Unit Slots:\n" +
+                    "\t\t -- Only 1 Unit can occupy a Unit Slot\n" +
+                    "\t\t -- The Total number of Unit Slots in your Society is equal to the Total number of Military Units you can possess (10 Max)\n"),
+            new Rules("Home Complexity", "+ Settlement:\n" +
+                    "\t - Cost (Settler Cost): Food 100, Lumber 100, Metal 100\n" +
+                    "\t - Stats: HP 25, Food 5/turn, Gold: 1/turn\n" +
+                    "\t - Buildings: 1, Units: 1, Modifiers: 0\n" +
+                    "+ Village:\n" +
+                    "\t - Cost: Food 150, Cedar 100, Copper 100\n" +
+                    "\t - Stats: HP 50, Food 10/turn, Gold: 5/turn\n" +
+                    "\t - Buildings: 1, Units: 1, Modifiers: 1\n" +
+                    "+ Town\n" +
+                    "\t - Cost: Grain 200, Cedar 150, Copper 150\n" +
+                    "\t - Stats: HP 75, Food 15/turn, Gold 10/turn\n" +
+                    "\t - Buildings: 2, Units: 1, Modifiers: 1\n" +
+                    "+ City\n" +
+                    "\t - Cost: Livestock 250, Maple 200, Iron 200, Gravel 100, OoI 2\n" +
+                    "\t - Stats: HP 100, Food 20/turn, Gold 15/turn\n" +
+                    "\t - Buildings: 3, Units: 2, Modifiers: 1\n" +
+                    "+ Metropolis\n" +
+                    "\t - Cost: Livestock 250, Maple 250, Iron 250, Gravel 150, OoI 5\n" +
+                    "\t - Stats: HP 125, Food 25/turn, Gold 20/turn\n" +
+                    "\t - Buildings: 4, Units: 2, Modifiers: 2\n"),
+            new Rules("Combat", "Experience & Leveling" +
+                    "+ Unit’s begin at Level 0" +
+                    "+ When you defeat another Unit, place an Experience Token on to the Lvl Slot on the Unit’s card\n" +
+                    "+ When there are 2 Experience Tokens, put both Tokens back to your Bank, and increase that Unit’s Level by 1 (add bonus to base stat)\n" +
+                    "\t - Level 1: Atk +2, Def +2\n" +
+                    "\t - Level 2: Atk +4, Def +4\n" +
+                    "\t - Level 3: HP +5, Atk +6, Def +6\n" +
+                    "\t - Level 4: HP +10, Atk +8, Def +8, MP +1\n" +
+                    "\t - Level 5: HP +10, Atk +10, Def +10, MP +2\n" +
+                    "Melee: (Instance of A attacking B)\n" +
+                    "\t - A makes an Attack Roll (Roll a D20) and then B makes an Escape Roll (Roll a D20)\n" +
+                    "\t\t -- If A wins, A makes a Damage Roll\n" +
+                    "\t\t\t --- D20 Roll + A Unit’s Attack = A’s Damage; A’s Damage - B’s HP\n" +
+                    "\t\t -- If B wins, B escapes the battle\n" +
+                    "\t - If B survives the attack, they can make a Counter-Attack Roll (Damage Roll - 10 damage)\n" +
+                    "Ranged: (A attacking B, in an adjacent tile) \n" +
+                    "\t - Same as Melee, except no option of a counter-attack since it is from a distance\n" +
+                    "Home Siege: (A attacking Home, Home has a military unit, B)\n" +
+                    "\t - Same as Melee, except the defending player can choose to defend with his Home or B. If defending with the Home, the Home does not deal damage.The defending player can choose B to defend instead, and without the counter-attack penalty\n" +
+                    "\t - If a Home’s HP reaches 0, the Home is Conquered, the attacking player can choose to either destroy the Home or Conquer, taking it over for themselves\n" +
+                    "\t\t -- If the Home is taken by the attacking player, the defending player must give them all of their associated cards for that Home\n" +
+                    "Ram: (A attacking Home)\n" +
+                    "\t - The same as a Home Siege, except it can only attack a Home, dealing direct damage to the Home’s walls, and then HP\n" +
+                    "\t - Ram’s cannot Conquer a Home, if the Home reaches 0 HP, it loses its ability to gain Resources\n" +
+                    "\t - Ram’s cannot attack other military units\n"),
+            new Rules("Win Conditions", "+ Militaristic:\n" +
+                    "\t - Defeat all Opponents by taking all of their Homes with no Opponent Settlers left on board\n" +
+                    "\t - Standing Army (5 Warriors, 5 Archers, 2 Rams, 2 Spies)\n" +
+                    "\t - 5 Metropolises\n" +
+                    "\t - 15 SP Cards\n" +
+                    "+ Economic:\n" +
+                    "\t - 1000 Gold\n" +
+                    "\t - 10 Currently worked Resources\n" +
+                    "\t - 5 Metropolises\n" +
+                    "\t - 2 Merchants\n" +
+                    "\t - 15 SP Cards\n" +
+                    "+ Imperialistic:\n" +
+                    "\t - All Tiles discovered\n" +
+                    "\t - Own more than 50% of the board (At full size, >32 tiles)\n" +
+                    "\t - 5 Cities\n" +
+                    "+ Intellectual:\n" +
+                    "\t - 20 Orbs of Intellect\n" +
+                    "\t - 5 Metropolises\n" +
+                    "\t - 5 Universities\n" +
+                    "\t - 2 Scholars\n" +
+                    "\t - 15 SP Cards\n" +
+                    "+ Social:\n" +
+                    "\t - 10 Orbs of Intellect\n" +
+                    "\t - 5 Metropolises\n" +
+                    "\t - 30 SP Cards\n"),
+            new Rules("Glossary", "")
 
     };
 
