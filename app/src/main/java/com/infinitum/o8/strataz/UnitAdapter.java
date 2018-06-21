@@ -135,7 +135,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final CardView cardView = holder.cardView;
+        CardView cardView = holder.cardView;
         ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
         ProgressBar defPb = cardView.findViewById(R.id.defPb);
         ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
@@ -227,21 +227,16 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                 hpBtnMin.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
+                        CardView cardView = holder.cardView;
+                            Snackbar.make(cardView, "Hp Set!", Snackbar.LENGTH_SHORT);
+                            /*
                             ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
                             TextView hpValue = cardView.findViewById(R.id.hpValue);
-                            String currentHp = String.valueOf(hpPb.getProgress());
-                            int hpInt;
-                            Snackbar.make(cardView, "Hp Set!", Snackbar.LENGTH_SHORT);
-                            hpInt = Integer.valueOf(currentHp);
-                            hpInt--;
-                            currentHp = String.valueOf(hpInt);
-                            hpPb.setProgress(Integer.getInteger(currentHp));
+                            int currentHp = hpPb.getProgress();
+                            currentHp--;
                             hpValue.setText(currentHp);
+*/
 
-                        }catch(Exception e){
-
-                        }
 
 
                     }
@@ -250,7 +245,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                 unitTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        CardView cardView = holder.cardView;
                         ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
                         ProgressBar defPb = cardView.findViewById(R.id.defPb);
                         ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
@@ -314,40 +309,34 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                     saveString("defValue", "20 / 20");
                                     saveString("atkValue", "20 / 20");
 
+
+
                                     String hpValueTV = sharedPreferences.getString("hpValue", "");
                                     String defValueTV = sharedPreferences.getString("defValue", "");
                                     String atkValueTV = sharedPreferences.getString("atkValue", "");
-                                    String currentHp = String.valueOf(hpPb.getProgress());
-                                    String maxHp = String.valueOf(hpPb.getMax());
-                                    String currentDef = String.valueOf(defPb.getProgress());
-                                    String maxDef = String.valueOf(defPb.getMax());
-                                    String currentAtk = String.valueOf(atkPb.getProgress());
-                                    String maxAtk = String.valueOf(atkPb.getMax());
+                                    int hpPbMax = sharedPreferences.getInt("hpPbMax", 0);
+                                    int hpPbProg = sharedPreferences.getInt("hpPbProg", 0);
+                                    int defPbMax = sharedPreferences.getInt("defPbMax", 0);
+                                    int defPbProg = sharedPreferences.getInt("defPbProg", 0);
+                                    int atkPbMax = sharedPreferences.getInt("atkPbMax", 0);
+                                    int atkPbProg = sharedPreferences.getInt("atkPbProg", 0);
+                                    int unitType = sharedPreferences.getInt("unitType", 0);
+                                    int unitMp = sharedPreferences.getInt("unitMpValue", 0);
 
-                                    unitTypeSpinner.setSelection(1);
-                                    hpPb.setMax(20);
-                                    hpPb.setProgress(20);
-                                    defPb.setMax(20);
-                                    defPb.setProgress(20);
-                                    atkPb.setMax(20);
-                                    atkPb.setProgress(20);
+
+                                    unitTypeSpinner.setSelection(unitType);
+                                    hpPb.setMax(hpPbMax);
+                                    hpPb.setProgress(hpPbProg);
+                                    defPb.setMax(defPbMax);
+                                    defPb.setProgress(defPbProg);
+                                    atkPb.setMax(atkPbMax);
+                                    atkPb.setProgress(atkPbProg);
                                     hpValue.setText(hpValueTV);
                                     defValue.setText(defValueTV);
                                     atkValue.setText(atkValueTV);
-                                    unitMpValue.setText("3");
+                                    unitMpValue.setText(String.valueOf(unitMp));
+
                                     Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
-
-
-
-
-
-                                    loadInt();
-                                    loadString();
-
-                                    hpValue.setText(hpValueTV);
-
-
-
 
                                 } catch (Exception e) {
                                     Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
@@ -356,46 +345,40 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                             //Archer
                             case 2:
 
-                                hpPb.setMax(30);
-                                hpPb.setProgress(30);
-                                defPb.setMax(10);
-                                defPb.setProgress(10);
-                                atkPb.setMax(10);
-                                atkPb.setProgress(10);
-                                hpValue.setText("30/30");
-                                defValue.setText("10/10");
-                                atkValue.setText("10/10");
-                                unitMpValue.setText("4");
-                                unitTypeSpinner.setSelection(2);
-
                                 try {
-                                    String hpValueTV = sharedPreferences.getString("hpValue", "");
-                                    String defValueTV = sharedPreferences.getString("defValue", "");
-                                    String atkValueTV = sharedPreferences.getString("atkValue", "");
-                                    String currentHp = String.valueOf(hpPb.getProgress());
-                                    String maxHp = String.valueOf(hpPb.getMax());
-                                    String currentDef = String.valueOf(defPb.getProgress());
-                                    String maxDef = String.valueOf(defPb.getMax());
-                                    String currentAtk = String.valueOf(atkPb.getProgress());
-                                    String maxAtk = String.valueOf(atkPb.getMax());
-
                                     saveInt("unitType", 2);
                                     saveInt("unitMpValue", 4);
-                                    saveInt("hpPbProg", 30);
                                     saveInt("hpPbMax", 30);
+                                    saveInt("hpPbProg", 30);
                                     saveInt("defPbMax", 10);
                                     saveInt("defPbProg", 10);
                                     saveInt("atkPbMax", 10);
                                     saveInt("atkPbProg", 10);
                                     saveInt("unitLvl", 0);
-                                    saveString("hpValue", currentHp + " / " + maxHp);
-                                    saveString("defValue", currentDef + " / " + maxDef);
-                                    saveString("atkValue", currentAtk + " / " + maxAtk);
+                                    saveString("hpValue", "30 / 30");
+                                    saveString("defValue", "10 / 10");
+                                    saveString("atkValue", "10 / 10");
 
+                                    String hpValueTV = sharedPreferences.getString("hpValue", "");
+                                    String defValueTV = sharedPreferences.getString("defValue", "");
+                                    String atkValueTV = sharedPreferences.getString("atkValue", "");
 
+                                    unitTypeSpinner.setSelection(2);
+                                    hpPb.setMax(30);
+                                    hpPb.setProgress(30);
+                                    defPb.setMax(10);
+                                    defPb.setProgress(10);
+                                    atkPb.setMax(10);
+                                    atkPb.setProgress(10);
+                                    hpValue.setText(hpValueTV);
+                                    defValue.setText(defValueTV);
+                                    atkValue.setText(atkValueTV);
+                                    unitMpValue.setText("4");
                                     //Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
+
+
                                 } catch (Exception e) {
-                                    Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
+                                   // Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
                                 }
                                 break;
                             //Horseman
@@ -428,7 +411,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                     saveString("atkValue", "30");
                                     //Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
                                 } catch (Exception e) {
-                                    Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
+                                   // Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
                                 }
                                 break;
                             //Spy
