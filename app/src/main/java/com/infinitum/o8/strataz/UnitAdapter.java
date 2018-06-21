@@ -35,6 +35,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
     private Cursor cursor;
     private SharedPreferences sharedPreferences;
     private int savedValue;
+    public String savedStringValue;
 
 
     interface Listener {
@@ -55,6 +56,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         private Cursor cursor;
         private SharedPreferences sharedPreferences;
         private int savedValue;
+        public String savedStringValue;
 
 
         public ViewHolder(final CardView v) {
@@ -90,11 +92,23 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         editor.putInt(key, value);
         editor.commit();
     }
+    public void saveString(String key, String value) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
 
     //Loads data from SharedPreferences
     public void loadInt() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         savedValue = sharedPreferences.getInt("key", 0);
+    }
+
+    public void loadString(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        savedStringValue = sharedPreferences.getString("key", "0");
     }
 
 
@@ -135,41 +149,54 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         holder.isRecyclable();
         holder.setIsRecyclable(false);
 
-        long unitType;
+        String currentHp = String.valueOf(hpPb.getProgress());
+        String maxHp = String.valueOf(hpPb.getMax());
+
+        int unitType;
 
         switch (position) {
-
+            //position = card
             case 0:
                 //not going off position; change to work on which unittype is selected
-                    if (position == 0) {
+                    //if (position == 0) {
 
                         try {
+                            loadInt();
+                            loadString();
 
                             unitMpValue = cardView.findViewById(R.id.unitMpValue);
                             unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
-                            int mpValue = sharedPreferences.getInt("unitMpValue", 1);
-                            int hpPbProg = sharedPreferences.getInt("hpPbProg", 1);
-                            int hpPbMax = sharedPreferences.getInt("hpPbMax", 1);
-                            unitType = sharedPreferences.getInt("hpPbMax", 1);
-                            //unitTypeSpinner.setSelection((int)(long)unitType);
+                            int mpValue = sharedPreferences.getInt("unitMpValue", 0);
+                            int hpPbMax = sharedPreferences.getInt("hpPbMax", 0);
+                            int hpPbProg = sharedPreferences.getInt("hpPbProg", 0);
+                            int defPbMax = sharedPreferences.getInt("defPbMax", 0);
+                            int defPbProg = sharedPreferences.getInt("defPbProg", 0);
+                            int atkPbMax = sharedPreferences.getInt("atkPbMax", 0);
+                            int atkPbProg = sharedPreferences.getInt("atkPbProg", 0);
+                            unitType = sharedPreferences.getInt("unitType", 0);
+                            String hpValueTV = sharedPreferences.getString("hpValue", "0/0");
+                            String defValueTV = sharedPreferences.getString("defValue", "0/0");
+                            String atkValueTV = sharedPreferences.getString("atkValue", "0");
 
-                            unitTypeSpinner.setSelection(2);
+                            //unitTypeSpinner.setSelection(2);
+                            unitMpValue.setText(String.valueOf(mpValue));
                             hpPb.setProgress(hpPbProg);
                             hpPb.setMax(hpPbMax);
-                            unitMpValue.setText(String.valueOf(mpValue));
-                            //defPb.setMax(20);
-                            //defPb.setProgress(20);
-                            //atkPb.setMax(20);
-                            //atkPb.setProgress(20);
-                            hpValue.setText(String.valueOf(hpPbMax));
-                            //defValue.setText("20/20");
-                            //atkValue.setText("20/20");
-                            Snackbar.make(cardView, "Load Worked!", Snackbar.LENGTH_SHORT).show();
+                            defPb.setMax(defPbMax);
+                            defPb.setProgress(defPbProg);
+                            atkPb.setMax(atkPbMax);
+                            atkPb.setProgress(atkPbProg);
+                            hpValue.setText(hpValueTV);
+                            defValue.setText(defValueTV);
+                            atkValue.setText(atkValueTV);
+                            unitTypeSpinner.setSelection(unitType);
+
+                            Snackbar.make(cardView, "Load Worked! " + unitType, Snackbar.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Snackbar.make(cardView, "Load Didn't Work!", Snackbar.LENGTH_SHORT).show();
                         }
 
-                    }
+                    //} if curly brace
                 break;
         }
 
@@ -200,6 +227,23 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                 hpBtnMin.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        try {
+                            ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
+                            TextView hpValue = cardView.findViewById(R.id.hpValue);
+                            String currentHp = String.valueOf(hpPb.getProgress());
+                            int hpInt;
+                            Snackbar.make(cardView, "Hp Set!", Snackbar.LENGTH_SHORT);
+                            hpInt = Integer.valueOf(currentHp);
+                            hpInt--;
+                            currentHp = String.valueOf(hpInt);
+                            hpPb.setProgress(Integer.getInteger(currentHp));
+                            hpValue.setText(currentHp);
+
+                        }catch(Exception e){
+
+                        }
+
+
                     }
                 });
 
@@ -223,7 +267,24 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                         //Unit Switch - Still need to add Imgs
                         switch (unitTypeSpinner.getSelectedItemPosition()) {
                             //Default Unit
-                       /* case 0:
+                        case 0:
+                            /* Throws off the sharedpreferences variables by defaulting to 0 on all variables - Put as default
+                            for switch case, loads default first, then the sharedpreferences variables, possibly because on
+                            selecting an item for the switch, it's already at 0 - I thought it triggered after selection
+
+                            saveInt("unitType", 0);
+                            saveInt("unitMpValue", 0);
+                            saveInt("hpPbMax", 0);
+                            saveInt("hpPbProg", 0);
+                            saveInt("defPbMax", 0);
+                            saveInt("defPbProg", 0);
+                            saveInt("atkPbMax", 0);
+                            saveInt("atkPbProg", 0);
+                            saveInt("unitLvl", 0);
+                            saveString("hpValue", "0/0");
+                            saveString("defValue", "0/0");
+                            saveString("atkValue", "0/0");
+                            */
                             hpPb.setMax(0);
                             hpPb.setProgress(0);
                             defPb.setMax(0);
@@ -236,43 +297,66 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                             unitMpValue.setText("");
                             Snackbar.make(cardView, "Unit Deleted!", Snackbar.LENGTH_SHORT);
                             break;
-                            */
+
                             //Warrior
                             case 1:
-                                //hpPb.setMax(40);
                                 try {
                                     saveInt("unitType", 1);
-                                    saveInt("unitMpValue", 25);
-                                    saveInt("hpPbProg", 50);
-                                    saveInt("hpPbMax", 100);
+                                    saveInt("unitMpValue", 3);
+                                    saveInt("hpPbMax", 20);
+                                    saveInt("hpPbProg", 20);
+                                    saveInt("defPbMax", 20);
+                                    saveInt("defPbProg", 20);
+                                    saveInt("atkPbMax", 20);
+                                    saveInt("atkPbProg", 20);
+                                    saveInt("unitLvl", 0);
+                                    saveString("hpValue", "20 / 20");
+                                    saveString("defValue", "20 / 20");
+                                    saveString("atkValue", "20 / 20");
+
+                                    String hpValueTV = sharedPreferences.getString("hpValue", "");
+                                    String defValueTV = sharedPreferences.getString("defValue", "");
+                                    String atkValueTV = sharedPreferences.getString("atkValue", "");
+                                    String currentHp = String.valueOf(hpPb.getProgress());
+                                    String maxHp = String.valueOf(hpPb.getMax());
+                                    String currentDef = String.valueOf(defPb.getProgress());
+                                    String maxDef = String.valueOf(defPb.getMax());
+                                    String currentAtk = String.valueOf(atkPb.getProgress());
+                                    String maxAtk = String.valueOf(atkPb.getMax());
+
+                                    unitTypeSpinner.setSelection(1);
+                                    hpPb.setMax(20);
+                                    hpPb.setProgress(20);
+                                    defPb.setMax(20);
+                                    defPb.setProgress(20);
+                                    atkPb.setMax(20);
+                                    atkPb.setProgress(20);
+                                    hpValue.setText(hpValueTV);
+                                    defValue.setText(defValueTV);
+                                    atkValue.setText(atkValueTV);
+                                    unitMpValue.setText("3");
                                     Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
+
+
+
+
+
+                                    loadInt();
+                                    loadString();
+
+                                    hpValue.setText(hpValueTV);
+
+
+
+
                                 } catch (Exception e) {
                                     Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
                                 }
-                                //hpPb.setProgress(20);
-                                //defPb.setMax(20);
-                                //defPb.setProgress(20);
-                                //atkPb.setMax(20);
-                                //atkPb.setProgress(20);
-                                //hpValue.setText("20/20");
-                                //defValue.setText("20/20");
-                                //atkValue.setText("20/20");
-                                //unitMpValue.setText("3");
-                                Snackbar.make(cardView, "Warrior Created!", Snackbar.LENGTH_SHORT);
                                 break;
                             //Archer
                             case 2:
-                                try {
-                                    saveInt("unitType", 2);
-                                    saveInt("unitMpValue", 24);
-                                    saveInt("hpPbProg", 49);
-                                    saveInt("hpPbMax", 99);
-                                    Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
-                                } catch (Exception e) {
-                                    Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
-                                }
+
                                 hpPb.setMax(30);
-                                saveInt("unitMpValue2", 5);
                                 hpPb.setProgress(30);
                                 defPb.setMax(10);
                                 defPb.setProgress(10);
@@ -282,6 +366,37 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                 defValue.setText("10/10");
                                 atkValue.setText("10/10");
                                 unitMpValue.setText("4");
+                                unitTypeSpinner.setSelection(2);
+
+                                try {
+                                    String hpValueTV = sharedPreferences.getString("hpValue", "");
+                                    String defValueTV = sharedPreferences.getString("defValue", "");
+                                    String atkValueTV = sharedPreferences.getString("atkValue", "");
+                                    String currentHp = String.valueOf(hpPb.getProgress());
+                                    String maxHp = String.valueOf(hpPb.getMax());
+                                    String currentDef = String.valueOf(defPb.getProgress());
+                                    String maxDef = String.valueOf(defPb.getMax());
+                                    String currentAtk = String.valueOf(atkPb.getProgress());
+                                    String maxAtk = String.valueOf(atkPb.getMax());
+
+                                    saveInt("unitType", 2);
+                                    saveInt("unitMpValue", 4);
+                                    saveInt("hpPbProg", 30);
+                                    saveInt("hpPbMax", 30);
+                                    saveInt("defPbMax", 10);
+                                    saveInt("defPbProg", 10);
+                                    saveInt("atkPbMax", 10);
+                                    saveInt("atkPbProg", 10);
+                                    saveInt("unitLvl", 0);
+                                    saveString("hpValue", currentHp + " / " + maxHp);
+                                    saveString("defValue", currentDef + " / " + maxDef);
+                                    saveString("atkValue", currentAtk + " / " + maxAtk);
+
+
+                                    //Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
+                                } catch (Exception e) {
+                                    Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
+                                }
                                 break;
                             //Horseman
                             case 3:
@@ -295,6 +410,26 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                 defValue.setText("10/10");
                                 atkValue.setText("30/30");
                                 unitMpValue.setText("6");
+                                unitTypeSpinner.setSelection(3);
+                                try {
+                                    String currentHp = String.valueOf(hpPb.getProgress());
+                                    String maxHp = String.valueOf(hpPb.getMax());
+                                    saveInt("unitType", 3);
+                                    saveInt("unitMpValue", 6);
+                                    saveInt("hpPbProg", 20);
+                                    saveInt("hpPbMax", 20);
+                                    saveInt("defPbMax", 10);
+                                    saveInt("defPbProg", 10);
+                                    saveInt("atkPbMax", 30);
+                                    saveInt("atkPbProg", 30);
+                                    saveInt("unitLvl", 0);
+                                    saveString("hpValue", currentHp + " / " + maxHp);
+                                    saveString("defValue", "10/10");
+                                    saveString("atkValue", "30");
+                                    //Snackbar.make(cardView, "Save Worked!", Snackbar.LENGTH_SHORT).show();
+                                } catch (Exception e) {
+                                    Snackbar.make(cardView, "Save Didn't Work!", Snackbar.LENGTH_SHORT).show();
+                                }
                                 break;
                             //Spy
                             case 4:
@@ -322,6 +457,19 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                 atkValue.setText("50/50");
                                 unitMpValue.setText("2");
                                 break;
+                            default:
+                                saveInt("unitType", 0);
+                                saveInt("unitMpValue", 0);
+                                saveInt("hpPbMax", 0);
+                                saveInt("hpPbProg", 0);
+                                saveInt("defPbMax", 0);
+                                saveInt("defPbProg", 0);
+                                saveInt("atkPbMax", 0);
+                                saveInt("atkPbProg", 0);
+                                saveInt("unitLvl", 0);
+                                saveString("hpValue", "0/0");
+                                saveString("defValue", "0/0");
+                                saveString("atkValue", "0/0");
                         }
 
                     }
