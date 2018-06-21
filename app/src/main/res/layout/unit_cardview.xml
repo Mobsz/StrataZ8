@@ -226,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/hpValue"
                     android:layout_alignTop="@+id/unitAtk"
-                    android:textAlignment="center" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/mpValue"
