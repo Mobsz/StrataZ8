@@ -207,10 +207,6 @@ public class Rules {
                     "\t\t -- The amount of Health your Unit has, once this reaches 0, the Unit dies\n" +
                     "\t - Atk: Attack Strength\n" +
                     "\t\t -- The Base Strength of an Attack made by this Unit\n" +
-                    "\t\t -- Weapon Upgrade:\n" +
-                    "\t\t\t --- Iron: \n" +
-                    "\t\t\t --- Cost: Lumber 50, Iron 100, Gold 50 \n" +
-                    "\t\t\t --- Info: Atk +5\n" +
                     "\t\t -- Atk Modifier:\n" +
                     "\t\t\t --- Make a D6 Roll\n" +
                     "\t - Def: Defensive Power\n" +
@@ -227,31 +223,31 @@ public class Rules {
                     "\t\t\t\t ---- Def +5\n" +
                     "\t - MP: Movement Points\n" +
                     "\t\t -- The amount of Movement available to this Unit, per turn\n" +
-                    "Army Units:\n" +
-                    "+ Warriors: \n" +
+                    "Units:\n" +
+                    "\t+ Warriors: \n" +
                     "\t - Cost: Food 50, Lumber 50, Metal 100, Gold 25\n" +
                     "\t - Stats: HP 20, Attack 20 , Defense 20, MP: 3\n" +
                     "\t - Warriors can Attack other Units and Homes\n" +
                     "\t - Warriors can Conquer a Home\n" +
                     "\t - Warriors can Sabotage\n" +
-                    "+ Archers:\n" +
+                    "\t+ Archers:\n" +
                     "\t - Cost: Food 50, Lumber 100, Metal 50, Gold 25\n" +
                     "\t - Stats: HP 30, Attack 10, Defense 10, MP: 4\n" +
                     "\t - Archers can Attack other Units and Homes. Since they Attack from a distance, it eliminates the Opponent’s ability to Counter-Attack.\n" +
                     "\t - Archers can Sabotage\n" +
-                    "+ Horseman:\n" +
+                    "\t+ Horseman:\n" +
                     "\t - Cost: Food 100, Lumber 50, Metal 100, Gold 25\n" +
                     "\t - Stats: HP 20, Attack 30, Defense 10, MP: 6\n" +
                     "\t - Horseman can Attack other Units and Homes\n" +
                     "\t - Horsemen can Conquer a Home\n" +
                     "\t - Horsemen can Sabotage\n" +
-                    "+ Rams:\n" +
+                    "\t+ Rams:\n" +
                     "\t - Cost: Food 50, Lumber 100, Metal 100\n" +
                     "\t - Stats: HP 30, Attack 50, Defense 20, MP: 2\n" +
                     "\t - Rams can only Attack Homes\n" +
                     "\t - Rams receive a bonus of +25 Damage when making a Damage Roll against a Home’s Walls only, not the Home’s HP\n" +
                     "\t - See Combat for Ram and Home Siege Attacking information\n" +
-                    "+ Spies:\n" +
+                    "\t+ Spies:\n" +
                     "\t - Cost: Food 25, Lumber 50, Metal 50, Gold 25, OoI 2\n" +
                     "\t - Spies can perform Sabotage\n" +
                     "\t - Spies can Steal an Opponent’s SP card, chosen at random. When this happens, destroy the Spy\n" +

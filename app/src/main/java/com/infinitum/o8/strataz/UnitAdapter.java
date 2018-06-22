@@ -281,13 +281,11 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 //Switch on position for adding boosts based on Lvl, doesn't seem to do anything...
                                 switch (position){
                                     case 1:
-                                    case 2:
-                                    case 3:
-                                    case 4:
-                                        String x = hpValue.toString();
-                                        int xx = Integer.getInteger(x + 50);
-                                        x = String.valueOf(xx);
-                                        Toast.makeText(getContext(), "X = " + x, Toast.LENGTH_SHORT).show();
+                                       // String x = hpValue.toString();
+                                        //int xx = Integer.getInteger(x + 50);
+                                        //x = String.valueOf(xx);
+                                       // Toast.makeText(getContext(), "X = " + x, Toast.LENGTH_SHORT).show();
+                                        hpValue.setText("Hello!");
 
                                         break;
                                 }
