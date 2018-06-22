@@ -59,6 +59,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         private SharedPreferences sharedPreferences;
         private int savedValue;
         public String savedStringValue;
+        public int unitLvl;
 
 
         public ViewHolder(final CardView v) {
@@ -105,7 +106,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
     //Loads data from SharedPreferences
     public void loadInt() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        savedValue = sharedPreferences.getInt("unitLvlKey", 0);
+        savedValue = sharedPreferences.getInt("key", 0);
     }
 
     public void loadString(){
@@ -132,8 +133,14 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
         Spinner unitLvlSpinner = parent.findViewById(R.id.unitLvlSpinner);
 
-        //unitLvlSpinner.setSelection(sharedPreferences.getInt("unitLvlKey", 0));
-        Toast.makeText(getContext(), "Unit Adapter" + unitLvl, Toast.LENGTH_SHORT).show();
+        try {
+                if(sharedPreferences.getInt("unitLvlKey", 0)!=0)
+            //unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
+            //unitLvlSpinner.setSelection(sharedPreferences.getInt("unitLvlKey", 0));
+            Toast.makeText(getContext(), "Unit Adapter" + unitLvl, Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+
+        }
 
         return new ViewHolder(cv);
 
@@ -145,7 +152,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
         ProgressBar defPb = cardView.findViewById(R.id.defPb);
         ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
-        final ImageView unitImg = cardView.findViewById(R.id.unitImg);
+        ImageView unitImg = cardView.findViewById(R.id.unitImg);
         TextView hpValue = cardView.findViewById(R.id.hpValue);
         TextView defValue = cardView.findViewById(R.id.defValue);
         TextView atkValue = cardView.findViewById(R.id.atkValue);
@@ -205,6 +212,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                             atkValue.setText(atkValueTV);
                             unitTypeSpinner.setSelection(unitType);
                             unitLvlSpinner.setSelection(unitLvl);
+                            //saveInt("unitLvlKey", unitLvl);
                             Toast.makeText(getContext(), "Lvl Spinner Set" + unitLvl, Toast.LENGTH_SHORT).show();
 
                             //Snackbar.make(cardView, "Load Worked! " + unitType, Snackbar.LENGTH_SHORT).show();
@@ -250,12 +258,43 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                 unitLvlSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                         CardView cardView = holder.cardView;
+                        ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
+                        ProgressBar defPb = cardView.findViewById(R.id.defPb);
+                        ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
+                        ImageView unitImg = cardView.findViewById(R.id.unitImg);
+                        TextView hpValue = cardView.findViewById(R.id.hpValue);
+                        TextView defValue = cardView.findViewById(R.id.defValue);
+                        TextView atkValue = cardView.findViewById(R.id.atkValue);
+                        TextView unitMpValue = cardView.findViewById(R.id.unitMpValue);
+                        Spinner unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
                         Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
+                        loadString();
+                        loadInt();
                         unitLvl = position;
-                        saveInt("unitLvlKey", unitLvl);
-                        Toast.makeText(getContext(), "Item Level Selected " + unitLvl, Toast.LENGTH_SHORT).show();
+                        //Kurfluffled workaround to keep feeding the data - Self forced persistence - Keeps loading elsewhere,
+                        //so look for that!
+                        if (position != 0) {
+                            try {
+                                saveInt("unitLvlKey", position);
+                                Toast.makeText(getContext(), "Item Level Selected " + unitLvl, Toast.LENGTH_SHORT).show();
+//Switch on position for adding boosts based on Lvl, doesn't seem to do anything...
+                                switch (position){
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                    case 4:
+                                        String x = hpValue.toString();
+                                        int xx = Integer.getInteger(x + 50);
+                                        x = String.valueOf(xx);
+                                        Toast.makeText(getContext(), "X = " + x, Toast.LENGTH_SHORT).show();
+
+                                        break;
+                                }
+                            } catch (Exception e) {
+
+                            }
+                        }
                     }
 
                     @Override
@@ -350,12 +389,12 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                     int atkPbMax = sharedPreferences.getInt("atkPbMax", 0);
                                     int atkPbProg = sharedPreferences.getInt("atkPbProg", 0);
                                     int unitType = sharedPreferences.getInt("unitType", 0);
-                                    int unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
+                                    //int unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
                                     int unitMp = sharedPreferences.getInt("unitMpValue", 0);
 
-
-                                    //unitTypeSpinner.setSelection(unitType);
-                                    unitLvlSpinner.setSelection(sharedPreferences.getInt("unitLvlKey", 0));
+                                    unitLvl = (sharedPreferences.getInt("unitLvlKey", 0));
+                                    unitTypeSpinner.setSelection(unitType);
+                                    unitLvlSpinner.setSelection(unitLvl);
                                     Toast.makeText(getContext(), "Unit Level " + unitLvl + "Selected!", Toast.LENGTH_SHORT).show();
                                     hpPb.setMax(hpPbMax);
                                     hpPb.setProgress(hpPbProg);
