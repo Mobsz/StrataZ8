@@ -131,16 +131,6 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
         viewHolder.setIsRecyclable(false);
 
-        Spinner unitLvlSpinner = parent.findViewById(R.id.unitLvlSpinner);
-
-        try {
-                if(sharedPreferences.getInt("unitLvlKey", 0)!=0)
-            //unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
-            //unitLvlSpinner.setSelection(sharedPreferences.getInt("unitLvlKey", 0));
-            Toast.makeText(getContext(), "Unit Adapter" + unitLvl, Toast.LENGTH_SHORT).show();
-        }catch(Exception e){
-
-        }
 
         return new ViewHolder(cv);
 
@@ -158,7 +148,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
         TextView atkValue = cardView.findViewById(R.id.atkValue);
         TextView unitMpValue = cardView.findViewById(R.id.unitMpValue);
         Spinner unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
-        Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
+        //Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
 //Stop RecyclerView from Recycling
         holder.isRecyclable();
         holder.setIsRecyclable(false);
@@ -186,7 +176,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                             Toast.makeText(getContext(), "onBind " + unitLvl, Toast.LENGTH_SHORT).show();
                             unitMpValue = cardView.findViewById(R.id.unitMpValue);
                             unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
-                            unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
+                            //unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
                             int mpValue = sharedPreferences.getInt("unitMpValue", 0);
                             int hpPbMax = sharedPreferences.getInt("hpPbMax", 0);
                             int hpPbProg = sharedPreferences.getInt("hpPbProg", 0);
@@ -254,53 +244,6 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                     }
                 });
 
-                // unitLvl keeps resetting to 0 during onViewHolder for some reason
-                unitLvlSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        CardView cardView = holder.cardView;
-                        ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
-                        ProgressBar defPb = cardView.findViewById(R.id.defPb);
-                        ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
-                        ImageView unitImg = cardView.findViewById(R.id.unitImg);
-                        TextView hpValue = cardView.findViewById(R.id.hpValue);
-                        TextView defValue = cardView.findViewById(R.id.defValue);
-                        TextView atkValue = cardView.findViewById(R.id.atkValue);
-                        TextView unitMpValue = cardView.findViewById(R.id.unitMpValue);
-                        Spinner unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
-                        Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
-                        loadString();
-                        loadInt();
-                        unitLvl = position;
-                        //Kurfluffled workaround to keep feeding the data - Self forced persistence - Keeps loading elsewhere,
-                        //so look for that!
-                        if (position != 0) {
-                            try {
-                                saveInt("unitLvlKey", position);
-                                Toast.makeText(getContext(), "Item Level Selected " + unitLvl, Toast.LENGTH_SHORT).show();
-//Switch on position for adding boosts based on Lvl, doesn't seem to do anything...
-                                switch (position){
-                                    case 1:
-                                       // String x = hpValue.toString();
-                                        //int xx = Integer.getInteger(x + 50);
-                                        //x = String.valueOf(xx);
-                                       // Toast.makeText(getContext(), "X = " + x, Toast.LENGTH_SHORT).show();
-                                        hpValue.setText("Hello!");
-
-                                        break;
-                                }
-                            } catch (Exception e) {
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
 
                 unitTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -315,7 +258,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                         TextView atkValue = cardView.findViewById(R.id.atkValue);
                         TextView unitMpValue = cardView.findViewById(R.id.unitMpValue);
                         Spinner unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
-                        Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
+                        //Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
 
                         Snackbar.make(cardView, "Unit Deleted!", Snackbar.LENGTH_SHORT);
 
@@ -378,7 +321,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
 
 
                                     String hpValueTV = sharedPreferences.getString("hpValue", "");
-                                    String defValueTV = sharedPreferences.getString("defValue", "");
+                                    String defValueTV = sharedPreferences.getString("defValue", "00");
                                     String atkValueTV = sharedPreferences.getString("atkValue", "");
                                     int hpPbMax = sharedPreferences.getInt("hpPbMax", 0);
                                     int hpPbProg = sharedPreferences.getInt("hpPbProg", 0);
@@ -390,10 +333,10 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                                     //int unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
                                     int unitMp = sharedPreferences.getInt("unitMpValue", 0);
 
-                                    unitLvl = (sharedPreferences.getInt("unitLvlKey", 0));
+                                    //unitLvl = (sharedPreferences.getInt("unitLvlKey", 0));
                                     unitTypeSpinner.setSelection(unitType);
-                                    unitLvlSpinner.setSelection(unitLvl);
-                                    Toast.makeText(getContext(), "Unit Level " + unitLvl + "Selected!", Toast.LENGTH_SHORT).show();
+                                    //unitLvlSpinner.setSelection(unitLvl);
+                                    //Toast.makeText(getContext(), "Unit Level " + unitLvl + "Selected!", Toast.LENGTH_SHORT).show();
                                     hpPb.setMax(hpPbMax);
                                     hpPb.setProgress(hpPbProg);
                                     defPb.setMax(defPbMax);
@@ -553,11 +496,7 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                     }
                 });
         }
-
-//Spinner onClick
-
-
-    }
+}
 
 
 
@@ -614,3 +553,64 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
             Snackbar.make(cardView, "DB didn't work!", Snackbar.LENGTH_SHORT).show();
 
         }*/
+
+//Unit Lvl Spinner
+        /*Spinner unitLvlSpinner = parent.findViewById(R.id.unitLvlSpinner);
+
+        try {
+                if(sharedPreferences.getInt("unitLvlKey", 0)!=0)
+            //unitLvl = sharedPreferences.getInt("unitLvlKey", 0);
+            //unitLvlSpinner.setSelection(sharedPreferences.getInt("unitLvlKey", 0));
+            Toast.makeText(getContext(), "Unit Adapter" + unitLvl, Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+
+        }
+        */
+        /*
+                // unitLvl keeps resetting to 0 during onViewHolder for some reason
+                unitLvlSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        CardView cardView = holder.cardView;
+                        ProgressBar hpPb = cardView.findViewById(R.id.hpPb);
+                        ProgressBar defPb = cardView.findViewById(R.id.defPb);
+                        ProgressBar atkPb = cardView.findViewById(R.id.atkPb);
+                        ImageView unitImg = cardView.findViewById(R.id.unitImg);
+                        TextView hpValue = cardView.findViewById(R.id.hpValue);
+                        TextView defValue = cardView.findViewById(R.id.defValue);
+                        TextView atkValue = cardView.findViewById(R.id.atkValue);
+                        TextView unitMpValue = cardView.findViewById(R.id.unitMpValue);
+                        Spinner unitTypeSpinner = cardView.findViewById(R.id.unitTypeSpinner);
+                        //Spinner unitLvlSpinner = cardView.findViewById(R.id.unitLvlSpinner);
+                        loadString();
+                        loadInt();
+                        unitLvl = position;
+                        //Kurfluffled workaround to keep feeding the data - Self forced persistence - Keeps loading elsewhere,
+                        //so look for that!
+                        if (position != 0) {
+                            try {
+                                saveInt("unitLvlKey", position);
+                                Toast.makeText(getContext(), "Item Level Selected " + unitLvl, Toast.LENGTH_SHORT).show();
+//Switch on position for adding boosts based on Lvl, doesn't seem to do anything...
+                                switch (position){
+                                    case 1:
+                                       // String x = hpValue.toString();
+                                        //int xx = Integer.getInteger(x + 50);
+                                        //x = String.valueOf(xx);
+                                       // Toast.makeText(getContext(), "X = " + x, Toast.LENGTH_SHORT).show();
+                                        hpValue.setText("Hello!");
+
+                                        break;
+                                }
+                            } catch (Exception e) {
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                */
