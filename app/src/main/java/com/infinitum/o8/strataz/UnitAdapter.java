@@ -267,7 +267,6 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.ViewHolder> {
                             unitMpValue.setText("");
                             //Snackbar.make(cardView, "Unit Deleted!", Snackbar.LENGTH_SHORT);
                             break;
-
                             //Warrior
                             case 1:
                                 try {
